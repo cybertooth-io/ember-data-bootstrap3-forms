@@ -1,0 +1,27 @@
+<div class="col-sm-6">
+  <form {{action "submit" on="submit"}} class="form">
+    <div class="form-group">
+      <label for="js-cannot-submit-form-txt" class="control-label">
+        Press Enter
+      </label>
+      <input type="text" id="js-cannot-submit-form-txt" class="form-control" placeholder="Press Enter"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label">
+        Submit Result
+      </label>
+      <div class="well">
+        <ol>
+          {{#each results as |result index|}}
+            <li>{{result}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-sm-6">
+<pre>
+
+</pre>
+</div>

@@ -1,0 +1,60 @@
+<section class="container">
+  <h1>
+    ember-data-bootstrap3-forms
+    <img src="http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms.svg"
+         alt="ember-data-bootstrap3-forms version"/>
+    <img src="https://badge.fury.io/js/ember-data-bootstrap3-forms.svg" alt="ember-data-bootstrap3-forms npm"/>
+  </h1>
+</section>
+
+{{!--
+<section class="container">
+  <h2><code>\{{hidden-submit}}</code> Button</h2>
+
+  <h3>Will Not Submit On Enter</h3>
+  {{cannot-submit-form}}
+</section>
+--}}
+
+<section class="container">
+  <h2>Model Errors Alert</h2>
+
+  <p><em>Assume the following for these examples...</em></p>
+
+  <pre>// ----------------------------------------------------------------------- app/models/demo-model.js
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  someBoolean: DS.attr('boolean'),
+  someNumber: DS.attr('number'),
+  someString: DS.attr('string')
+});
+
+// ----------------------------------------------------------------------- app/routes/some-route.js
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+  /** For this demo we've hard-coded errors into each of the model's fields */
+  model() {
+    const demoModel = this.get('store').createRecord('demo-model');
+    demoModel.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
+    demoModel.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
+    demoModel.get('errors')._add('someString', 'An error message about the someString attribute');
+    return demoModel;
+  }
+});
+</pre>
+
+  <h3>Show All Errors From A Model</h3>
+  {{demo-errors-alert model=model}}
+
+  <h3>Show All Errors From A Model As Warning</h3>
+  {{demo-errors-alert-warning model=model}}
+
+  <h3>Exclude Some Errors From A Model</h3>
+  {{demo-errors-alert-excludes model=model}}
+
+  <h3>Include Specific Errors From A Model</h3>
+  {{demo-errors-alert-includes model=model}}
+</section>
+{{outlet}}
