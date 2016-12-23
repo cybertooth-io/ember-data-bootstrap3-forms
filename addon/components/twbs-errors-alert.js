@@ -55,19 +55,16 @@ export default Ember.Component.extend({
   model: undefined,
   role: 'alert',
   _excludesArray: Ember.computed('excludes', function () {
-    const excludes = this.get('excludes');
-    if ('array' === Ember.typeOf(excludes)) {
-      return excludes;
-    }
-    // assume a String and split it on comma
-    return String(excludes).split(',');
+    return this._convertToArray(this.get('excludes'));
   }),
   _includesArray: Ember.computed('includes', function () {
-    const includes = this.get('includes');
-    if ('array' === Ember.typeOf(includes)) {
-      return includes;
+    return this._convertToArray(this.get('includes'));
+  }),
+  _convertToArray(object) {
+    if ('array' === Ember.typeOf(object)) {
+      return object;
     }
     // assume a String and split it on comma
-    return String(includes).split(',');
-  })
+    return String(object).split(',');
+  }
 });
