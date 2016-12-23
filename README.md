@@ -1,8 +1,8 @@
-# ember-data-bootstrap3-forms [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms) ![](http://embadge.io/v1/badge.svg?start=2.3.0)
+# ember-data-bootstrap3-forms [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms) ![](http://embadge.io/v1/badge.svg?start=1.13.0)
 
 [![npm version](http://badge.fury.io/js/ember-data-bootstrap3-forms.svg)](http://badge.fury.io/js/ember-data-bootstrap3-forms) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-data-bootstrap3-forms/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-data-bootstrap3-forms) ![Dependencies](http://david-dm.org/cybertoothca/ember-data-bootstrap3-forms.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-data-bootstrap3-forms.svg)](http://emberobserver.com/addons/ember-data-bootstrap3-forms) [![License](http://img.shields.io/npm/l/ember-data-bootstrap3-forms.svg)](LICENSE.md)
 
-This addon allows you to quickly and conveniently create a [Bootstrap3 Popover](http://getbootstrap.com/javascript/#popovers).
+This addon helps present your Ember-Data model errors in a consistent fashion using Bootstrap3 alerts and help-blocks.
 
 ## Demo
 
@@ -13,8 +13,9 @@ The demonstration web application can be found here:
 
 This addon supplies the following _components_:
 
-
-The following _mixin_ also ships with this addon:
+* `{{twbs-errors-alert}}` - a component that listens to a single model's errors and prepares a bootstrap alert box
+with all of the items in an unordered list.
+* `{{twbs-errors-alert-dismissable}}` - _COMING SOON_
 
 _Further information about these items can be found in the Usage section below._
 
@@ -22,7 +23,7 @@ _Further information about these items can be found in the Usage section below._
 
 * Ember >= 1.13.0
 * Ember CLI
-* You must have Bootstrap 3.x installed in your Ember application.  Feel free to use the
+* You should have Bootstrap 3.x installed in your Ember application.  Feel free to use the
   [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
   addon to setup Bootstrap if you haven't already done so.
 
@@ -32,22 +33,40 @@ The following will install this addon:
 
     $ ember install ember-data-bootstrap3-forms
 
-__As mentioned, you must install Bootstrap3.  Refer to the requirements section above.__
+**As mentioned, you should install Bootstrap3 in order for the `.alert` styling to be applied.  Refer to the 
+requirements section above.**
 
 ### Upgrading
 
 When working through the Ember upgrade process, I recommend
-invoking the `ember install ember-data-bootstrap3-forms` command once
-you are done to get the latest version of the addon.
+invoking the `ember install ember-data-bootstrap3-forms` command following the upgrade.  This should get you 
+the latest version of the addon.
 
 ## Usage
 
-As mentioned above there are dozens of examples on the demonstration site:
+As mentioned above there are several examples on the demonstration site:
 [http://ember-data-bootstrap3-forms.cybertooth.io/](http://ember-data-bootstrap3-forms.cybertooth.io/)
 
 ### Components
 
-### Mixins
+#### `{{twbs-errors-alert}}`
+
+##### Arguments
+
+##### Examples
+
+[Check out the demo application](http://ember-data-bootstrap3-forms.cybertooth.io/)
+
+#### `{{twbs-errors-alert-dismissable}}`
+
+_COMING SOON_
+
+##### Arguments
+
+##### Examples
+
+[Check out the demo application](http://ember-data-bootstrap3-forms.cybertooth.io/)
+
 
 ### Troubleshooting And Tips
 

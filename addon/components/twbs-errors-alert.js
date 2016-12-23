@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/errors-alert';
+import layout from '../templates/components/twbs-errors-alert';
 
 const EMPTY_ARRAY = Object.freeze([]);
 
@@ -14,7 +14,10 @@ export default Ember.Component.extend({
    */
   attributeNames: EMPTY_ARRAY,
   classNames: ['panel'],
-  errors: Ember.computed('_excludesArray', '_includesArray', 'model.errors', function () {
+  /**
+   * Prepare a copy of the errors that include/exclude only the fields specified or returns all the errors.
+   */
+  errors: Ember.computed('_excludesArray', '_includesArray', 'model.errors.[]', function () {
     if (Ember.isPresent(this.get('_excludesArray'))) {
       const errors = Ember.A().pushObjects(this.get('model.errors.messages'));
       this.get('_excludesArray').forEach((field) => {
