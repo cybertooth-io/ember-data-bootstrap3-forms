@@ -1,6 +1,8 @@
 <p>{{yield}}</p>
-<ul>
-  {{#each errors as |error|}}
-    <li>{{error}}</li>
-  {{/each}}
-</ul>
+{{#if errorsPresent?}}
+  <ul>
+    {{#each errors as |error|}}
+      <li>{{error}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

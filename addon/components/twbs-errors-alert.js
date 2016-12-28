@@ -13,11 +13,11 @@ export default Ember.Component.extend({
    * Putting a minus symbol infront of an attribute name will exclude it.
    */
   attributeNames: EMPTY_ARRAY,
-  classNames: ['panel'],
+  classNames: ['alert'],
   /**
    * Prepare a copy of the errors that include/exclude only the fields specified or returns all the errors.
    */
-  errors: Ember.computed('_excludesArray', '_includesArray', 'model.errors.[]', function () {
+  errors: Ember.computed('_excludesArray', '_includesArray', 'model.errors.length', function () {
     if (Ember.isPresent(this.get('_excludesArray'))) {
       const errors = Ember.A().pushObjects(this.get('model.errors.messages'));
       this.get('_excludesArray').forEach((field) => {
@@ -38,6 +38,7 @@ export default Ember.Component.extend({
     }
     return this.get('model.errors.messages');
   }),
+  'errorsPresent?': Ember.computed.notEmpty('errors'),
   /**
    * The camel-cased field names to exclude from the computed errors collection.  Takes precedence over `includes`.
    */

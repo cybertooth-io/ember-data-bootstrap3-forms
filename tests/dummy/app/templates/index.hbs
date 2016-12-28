@@ -1,8 +1,6 @@
 <section class="container">
   <h1>
     ember-data-bootstrap3-forms
-    <img src="http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms.svg"
-         alt="ember-data-bootstrap3-forms version"/>
     <img src="https://badge.fury.io/js/ember-data-bootstrap3-forms.svg" alt="ember-data-bootstrap3-forms npm"/>
   </h1>
 </section>
@@ -37,9 +35,9 @@ export default Ember.Route.extend({
   /** For this demo we've hard-coded errors into each of the model's fields */
   model() {
     const demoModel = this.get('store').createRecord('demo-model');
-    demoModel.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
-    demoModel.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
-    demoModel.get('errors')._add('someString', 'An error message about the someString attribute');
+    demoModel.get('errors').add('someBoolean', 'An error message about the someBoolean attribute');
+    demoModel.get('errors').add('someNumber', 'An error message about the someNumber attribute');
+    demoModel.get('errors').add('someString', 'An error message about the someString attribute');
     return demoModel;
   }
 });

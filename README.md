@@ -51,7 +51,21 @@ As mentioned above there are several examples on the demonstration site:
 
 #### `{{twbs-errors-alert}}`
 
+A Bootstrap3 _alert_ box that contains a list of model errors.  You provide a block to the component, it will be
+placed in a paragraph element just above the unordered-list of errors.  When the model does not have any errors, 
+the alert will not be visible. 
+
 ##### Arguments
+
+* `model` (**REQUIRED**) - the supplied model's `DS.Errors` collection is the source for the list of errors presented
+in the alert.
+* `excludes` (OPTIONAL) - a comma-separated list of the camelCased attribute names from the model whose errors
+will be ignored and not presented in the list.  **If you specify both an `includes` and `excludes` argument, the 
+`excludes` argument always takes precedence.**
+* `includes` (OPTIONAL) - a comma-separated list of the camelCased attribute names from the model whose errors
+should be included in the list.
+* `classNames` (OPTIONAL) - use the `classNames` argument to pass an alert style to the errors alert.  For example,
+`alert-danger` or `alert-warning`.
 
 ##### Examples
 
