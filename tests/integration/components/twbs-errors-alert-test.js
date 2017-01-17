@@ -28,9 +28,9 @@ test('when passed a block it is placed inside the p element', function (assert) 
 test('when passed a model with some errors', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));
-    this.get('model.errors').add('someBoolean', 'An error in the someBoolean field.');
-    this.get('model.errors').add('someNumber', 'An error in the someNumber field.');
-    this.get('model.errors').add('someString', 'An error in the someString field.');
+    this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
+    this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
+    this.get('model.errors')._add('someString', 'An error in the someString field.');
   });
 
   this.render(hbs`{{twbs-errors-alert model=model}}`);
@@ -43,9 +43,9 @@ test('when passed a model with some errors', function (assert) {
 test('when including only the someString errors', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));
-    this.get('model.errors').add('someBoolean', 'An error in the someBoolean field.');
-    this.get('model.errors').add('someNumber', 'An error in the someNumber field.');
-    this.get('model.errors').add('someString', 'An error in the someString field.');
+    this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
+    this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
+    this.get('model.errors')._add('someString', 'An error in the someString field.');
   });
 
   this.render(hbs`{{twbs-errors-alert model=model includes="someString"}}`);
@@ -56,9 +56,9 @@ test('when including only the someString errors', function (assert) {
 test('when including multiple error fields', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));
-    this.get('model.errors').add('someBoolean', 'An error in the someBoolean field.');
-    this.get('model.errors').add('someNumber', 'An error in the someNumber field.');
-    this.get('model.errors').add('someString', 'An error in the someString field.');
+    this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
+    this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
+    this.get('model.errors')._add('someString', 'An error in the someString field.');
   });
 
   this.render(hbs`{{twbs-errors-alert model=model includes="someNumber,someString"}}`);
@@ -70,9 +70,9 @@ test('when including multiple error fields', function (assert) {
 test('when excluding the someNumber errors', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));
-    this.get('model.errors').add('someBoolean', 'An error in the someBoolean field.');
-    this.get('model.errors').add('someNumber', 'An error in the someNumber field.');
-    this.get('model.errors').add('someString', 'An error in the someString field.');
+    this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
+    this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
+    this.get('model.errors')._add('someString', 'An error in the someString field.');
   });
 
   this.render(hbs`{{twbs-errors-alert model=model excludes="someNumber"}}`);
@@ -85,9 +85,9 @@ test('when excluding the someNumber errors', function (assert) {
 test('when excluding multiple error fields', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));
-    this.get('model.errors').add('someBoolean', 'An error in the someBoolean field.');
-    this.get('model.errors').add('someNumber', 'An error in the someNumber field.');
-    this.get('model.errors').add('someString', 'An error in the someString field.');
+    this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
+    this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
+    this.get('model.errors')._add('someString', 'An error in the someString field.');
   });
 
   this.render(hbs`{{twbs-errors-alert model=model excludes="someBoolean,someNumber"}}`);
@@ -98,9 +98,9 @@ test('when excluding multiple error fields', function (assert) {
 test('when excluding and including at the same time, exclusions take precedence', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));
-    this.get('model.errors').add('someBoolean', 'An error in the someBoolean field.');
-    this.get('model.errors').add('someNumber', 'An error in the someNumber field.');
-    this.get('model.errors').add('someString', 'An error in the someString field.');
+    this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
+    this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
+    this.get('model.errors')._add('someString', 'An error in the someString field.');
   });
 
   this.render(hbs`{{twbs-errors-alert model=model excludes="someNumber" includes="someNumber"}}`);

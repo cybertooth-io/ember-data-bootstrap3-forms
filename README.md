@@ -13,9 +13,11 @@ The demonstration web application can be found here:
 
 This addon supplies the following _components_:
 
-* `{{twbs-errors-alert}}` - a component that listens to a single model's errors and prepares a bootstrap alert box
+* [`{{twbs-errors-alert}}`](#twbs-errors-alert) - a component that listens to a single model's errors and prepares a bootstrap alert box
 with all of the items in an unordered list.
 * `{{twbs-errors-alert-dismissable}}` - _COMING SOON_
+* [`{{twbs-form-group}}`](#twbs-form-group) - a component generating a Bootstrap `<div class="form-group">...</div>` that will watch
+for errors on a particular field and then apply the `.has-error` class.
 
 _Further information about these items can be found in the Usage section below._
 
@@ -33,7 +35,7 @@ The following will install this addon:
 
     $ ember install ember-data-bootstrap3-forms
 
-**As mentioned, you should install Bootstrap3 in order for the `.alert` styling to be applied.  Refer to the 
+**As mentioned, you should install Bootstrap3 in order for the correct styling to be applied.  Refer to the 
 requirements section above.**
 
 ### Upgrading
@@ -81,6 +83,26 @@ _COMING SOON_
 
 [Check out the demo application](http://ember-data-bootstrap3-forms.cybertooth.io/)
 
+#### `{{twbs-form-group}}`
+
+A Bootstrap 3 `.form-group` that accepts a model's errors for a given field
+and listens for field errors in order to apply the danger colour and produce
+the list of error messages below the form itself.
+
+To understand how this works, familiarize yourself with [Bootstrap 3's form validation
+states](http://getbootstrap.com/css/#forms-control-validation).  Also recognize
+that Ember Data model errors can be viewed from a field's perspective and this
+component is watching that particular view of the errors.
+
+##### Arguments
+
+* `fieldErrors` (**REQUIRED**) - the model's errors collection for a specific
+field.  For example, if your model has a field named `firstName` you would pass
+the following: `model.errors.firstName`.
+
+##### Examples
+
+[Check out the demo application](http://ember-data-bootstrap3-forms.cybertooth.io/)
 
 ### Troubleshooting And Tips
 
