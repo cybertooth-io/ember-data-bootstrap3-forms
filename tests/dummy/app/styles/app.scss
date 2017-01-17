@@ -1,4 +1,4 @@
-$icon-font-path: './bootstrap/' !default;
+$icon-font-path: './bootstrap/' !default; // TODO: this should be removed once I fix the bootstrap3-sass addon
 //noinspection CssUnknownTarget
 @import 'ember-cli-bootstrap3-variables';
 
