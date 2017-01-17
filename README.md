@@ -89,6 +89,11 @@ A Bootstrap 3 `.form-group` that accepts a model's errors for a given field
 and listens for field errors in order to apply the danger colour and produce
 the list of error messages below the form itself.
 
+To understand how this works, familiarize yourself with [Bootstrap 3's form validation
+states](http://getbootstrap.com/css/#forms-control-validation).  Also recognize
+that Ember Data model errors can be viewed from a field's perspective and this
+component is watching that particular view of the errors.
+
 ##### Arguments
 
 * `fieldErrors` (**REQUIRED**) - the model's errors collection for a specific
