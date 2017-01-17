@@ -1,9 +1,9 @@
+$icon-font-path: './bootstrap/' !default;
 //noinspection CssUnknownTarget
 @import 'ember-cli-bootstrap3-variables';
 
 $font-family-base: Lato, $font-family-base;
 $headings-font-family: Raleway, $font-family-base;
-//$navbar-inverse-bg: darken($brand-warning, 40%);
 $navbar-inverse-bg: darken($brand-primary, 25%);
 
 //noinspection CssUnknownTarget

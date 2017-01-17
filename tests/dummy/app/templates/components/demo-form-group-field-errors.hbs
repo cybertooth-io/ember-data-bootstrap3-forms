@@ -1,0 +1,19 @@
+<div class="col-sm-6">
+  <div class="form">
+    {{#twbs-form-group fieldErrors=model.errors.anotherString}}
+      <label for="js-some-string" class="control-label">Another String</label>
+      {{input classNames="form-control" type="text" value=model.anotherString}}
+      <p class="help-block">Type the word <em>error</em> to add an error to the field.</p>
+    {{/twbs-form-group}}
+  </div>
+</div>
+<div class="col-sm-6">
+<pre> &lt;div class="form">
+  \{{#twbs-form-group fieldErrors=model.errors.anotherString}}
+    &lt;label for="js-some-string" class="control-label">Another String&lt;/label>
+  \{{input classNames="form-control" type="text" value=model.anotherString}}
+    &lt;p class="help-block">Type the word <em>error</em> to add an error to the field.&lt;/p>
+  \{{/twbs-form-group}}
+&lt;/div>
+</pre>
+</div>

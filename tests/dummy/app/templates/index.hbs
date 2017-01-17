@@ -15,14 +15,14 @@
 --}}
 
 <section class="container">
-  <h2>Model Errors Alert</h2>
-
+  <h2>A Simulated Model With Errors</h2>
   <p><em>Assume the following for these examples...</em></p>
 
   <pre>// ----------------------------------------------------------------------- app/models/demo-model.js
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  anotherString: DS.attr('string')
   someBoolean: DS.attr('boolean'),
   someNumber: DS.attr('number'),
   someString: DS.attr('string')
@@ -42,6 +42,7 @@ export default Ember.Route.extend({
   }
 });
 </pre>
+  <h2>Model Errors Alert</h2>
 
   <h3>Show All Errors From A Model</h3>
   {{demo-errors-alert model=model}}
@@ -54,5 +55,8 @@ export default Ember.Route.extend({
 
   <h3>Include Specific Errors From A Model</h3>
   {{demo-errors-alert-includes model=model}}
+
+  <h3>Form Group That Is <code>has-error</code> Aware</h3>
+  {{demo-form-group-field-errors model=model}}
 </section>
 {{outlet}}

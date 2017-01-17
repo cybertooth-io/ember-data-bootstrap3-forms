@@ -1,0 +1,11 @@
+{{yield}}
+
+{{#if hasError?}}
+  <p class="help-block twbs-form-group-errors">
+    {{#each errorMessages as |errorMessage|}}
+      <span class="glyphicon glyphicon-exclamation-sign"></span>
+      <span class="twbs-form-group-error-message">{{errorMessage}}</span>
+      <br/>
+    {{/each}}
+  </p>
+{{/if}}
