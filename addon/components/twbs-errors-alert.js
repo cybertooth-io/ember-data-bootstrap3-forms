@@ -7,21 +7,24 @@ export default Ember.Component.extend({
   /**
    * Prepare a copy of the errors that include/exclude only the fields specified or returns all the errors.
    */
-  errors: Ember.computed('_excludesArray.[]', '_includesArray.[]', 'model.errors.length', function () {
-    if (Ember.isPresent(this.get('_excludesArray'))) {
-      const errors = Ember.A().pushObjects(this.get('model.errors.messages'));
-      this.get('_excludesArray').forEach((field) => {
-        this.get(`model.errors.${field}`).forEach((error) => {
-          errors.removeObject(error.message);
-        });
+  errors: Ember.computed('_excludesArray.[]', '_includesArray.[]', 'model.errors.@each.attribute', /*'model.errors.[]', 'model.errors.length', */function () {
+    const excludedFields = this.get('_excludesArray');
+    if (Ember.isPresent(excludedFields)) {
+      const errors = Ember.A();
+      this.get('model.errors').forEach((error) => {
+        if (!excludedFields.includes(Ember.get(error, 'attribute'))) {
+          errors.pushObject(Ember.get(error, 'message'));
+        }
       });
       return errors;
     }
     if (Ember.isPresent(this.get('_includesArray'))) {
       const errors = Ember.A();
       this.get('_includesArray').forEach((field) => {
-        this.get(`model.errors.${field}`).forEach((error) => {
-          errors.pushObject(error.message);
+        this.get('model.errors').forEach((error) => {
+          if (field === Ember.get(error, 'attribute')) {
+            errors.pushObject(Ember.get(error, 'message'));
+          }
         });
       });
       return errors;
@@ -53,11 +56,11 @@ export default Ember.Component.extend({
   }),
   _convertToArray(object) {
     if ('array' === Ember.typeOf(object)) {
-      return object;
+      return Ember.A().pushObjects(object);
     }
     if (Ember.isPresent(object)) {
       // assume a String and split it on comma
-      return String(object).split(',');
+      return Ember.A().pushObjects(String(object).split(','));
     }
     return Ember.A();
   }
