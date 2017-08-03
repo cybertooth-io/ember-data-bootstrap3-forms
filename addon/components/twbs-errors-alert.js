@@ -11,7 +11,7 @@ export default Ember.Component.extend({
     if (Ember.isPresent(this.get('_excludesArray'))) {
       const errors = Ember.A().pushObjects(this.get('model.errors.messages'));
       this.get('_excludesArray').forEach((field) => {
-        this.get('model.errors').errorsFor(field).forEach((error) => {
+        this.get(`model.errors.${field}`).forEach((error) => {
           errors.removeObject(error.message);
         });
       });
@@ -20,7 +20,7 @@ export default Ember.Component.extend({
     if (Ember.isPresent(this.get('_includesArray'))) {
       const errors = Ember.A();
       this.get('_includesArray').forEach((field) => {
-        this.get('model.errors').errorsFor(field).forEach((error) => {
+        this.get(`model.errors.${field}`).forEach((error) => {
           errors.pushObject(error.message);
         });
       });
