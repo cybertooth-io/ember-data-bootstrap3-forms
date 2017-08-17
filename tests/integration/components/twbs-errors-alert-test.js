@@ -14,6 +14,16 @@ test('when no errors are present the alert div is hidden', function (assert) {
   assert.equal(this.$('.alert').css('display'), 'none');
 });
 
+test('when no errors are present but the includes was supplied the alert div is hidden', function (assert) {
+  this.render(hbs`{{twbs-errors-alert includes='base'}}`);
+  assert.equal(this.$('.alert').css('display'), 'none');
+});
+
+test('when no errors are present but the excludes was supplied the alert div is hidden', function (assert) {
+  this.render(hbs`{{twbs-errors-alert excludes='base'}}`);
+  assert.equal(this.$('.alert').css('display'), 'none');
+});
+
 test('when passed a block it is placed inside the p element', function (assert) {
   Ember.run(() => {
     this.set('model', this.store.createRecord('demo-model'));

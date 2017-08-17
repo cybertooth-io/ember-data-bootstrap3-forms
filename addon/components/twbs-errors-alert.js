@@ -10,24 +10,29 @@ export default Ember.Component.extend({
   errors: Ember.computed('_excludesArray.[]', '_includesArray.[]', 'model.errors.@each.attribute', /*'model.errors.[]', 'model.errors.length', */function () {
     const excludedFields = this.get('_excludesArray');
     if (Ember.isPresent(excludedFields)) {
-      const errors = Ember.A();
-      this.get('model.errors').forEach((error) => {
-        if (!excludedFields.includes(Ember.get(error, 'attribute'))) {
-          errors.pushObject(Ember.get(error, 'message'));
-        }
-      });
-      return errors;
-    }
-    if (Ember.isPresent(this.get('_includesArray'))) {
-      const errors = Ember.A();
-      this.get('_includesArray').forEach((field) => {
+      const filteredErrors = Ember.A();
+      if (Ember.isPresent(this.get('model.errors'))) {
         this.get('model.errors').forEach((error) => {
-          if (field === Ember.get(error, 'attribute')) {
-            errors.pushObject(Ember.get(error, 'message'));
+          if (!excludedFields.includes(Ember.get(error, 'attribute'))) {
+            filteredErrors.pushObject(Ember.get(error, 'message'));
           }
         });
+      }
+      return filteredErrors;
+    }
+    if (Ember.isPresent(this.get('_includesArray'))) {
+      const filteredErrors = Ember.A();
+      const modelErrors = this.get('model.errors');
+      this.get('_includesArray').forEach((field) => {
+        if (Ember.isPresent(modelErrors)) {
+          modelErrors.forEach((error) => {
+            if (field === Ember.get(error, 'attribute')) {
+              filteredErrors.pushObject(Ember.get(error, 'message'));
+            }
+          });
+        }
       });
-      return errors;
+      return filteredErrors;
     }
     return this.get('model.errors.messages');
   }),
