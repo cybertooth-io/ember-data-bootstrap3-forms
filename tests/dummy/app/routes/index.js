@@ -1,6 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  actions: {
+    resetForm() {
+      window.alert('Form Was Reset!  Rollback your model attributes that may have been dirtied.');
+    },
+    submitForm() {
+      window.alert('Form Was Submitted!  POST/PATCH your model from the form.');
+    }
+  },
   model() {
     const demoModel = this.get('store').createRecord('demo-model');
     demoModel.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');

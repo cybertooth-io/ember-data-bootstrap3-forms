@@ -59,4 +59,48 @@ export default Ember.Route.extend({
   <h3>Form Group That Is <code>has-error</code> Aware</h3>
   {{demo-form-group-field-errors model=model}}
 </section>
+
+<section>
+  <div class="container">
+    <h2>Form Component</h2>
+
+    <h3>Form Submission With Submit-Button</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        {{#twbs-form submit=(route-action "submitForm")}}
+          <button class="btn btn-default">Submit This Form</button>
+        {{/twbs-form}}
+      </div>
+      <div class="col-sm-6">
+<pre>\{{#twbs-form submit=(route-action "submitForm")}}
+  &lt;button class="btn btn-default">Submit This Form&lt;/button>
+  \{{/twbs-form}}
+</pre>
+        <p>
+          <em>Notice that I'm using the clever `ember-route-action-helper` in this example. You can call
+            regular component actions too.</em>
+        </p>
+      </div>
+    </div>
+
+    <h3>Form Reset With Reset-Button</h3>
+    <div class="row">
+      <div class="col-sm-6">
+        {{#twbs-form reset=(route-action "resetForm")}}
+          <button class="btn btn-default" type="reset">Reset This Form</button>
+        {{/twbs-form}}
+      </div>
+      <div class="col-sm-6">
+<pre>\{{#twbs-form reset=(route-action "resetForm")}}
+  &lt;button class="btn btn-default">Reset This Form&lt;/button>
+  \{{/twbs-form}}
+</pre>
+        <p>
+          <em>Notice that I'm using the clever `ember-route-action-helper` in this example. You can call
+            regular component actions too.</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 {{outlet}}
