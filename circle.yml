@@ -16,5 +16,8 @@ dependencies:
     - sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
     - rm google-chrome.deb
   post:
-    - npm install
     - bower install
+test:
+  override:
+    - node_modules/.bin/ember try:one ember-lts-2.4 test --skip-cleanup
+    - node_modules/.bin/ember try:one ember-lts-2.8 test --skip-cleanup
