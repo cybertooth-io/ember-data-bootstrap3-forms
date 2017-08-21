@@ -21,3 +21,4 @@ test:
   override:
     - node_modules/.bin/ember try:one ember-lts-2.4 test --skip-cleanup
     - node_modules/.bin/ember try:one ember-lts-2.8 test --skip-cleanup
+    - node_modules/.bin/ember try:one ember-default test --skip-cleanup
