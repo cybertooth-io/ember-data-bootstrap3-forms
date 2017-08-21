@@ -3,6 +3,9 @@ machine:
     version: 6
 
 dependencies:
+  cache_directories:
+    - '~/.npm'
+    - '~/.cache'  # includes bowers cache
   pre:
     # Turn off npm spinner & feedback
     - npm config set spin false
