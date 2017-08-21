@@ -51,6 +51,25 @@ As mentioned above there are several examples on the demonstration site:
 
 ### Components
 
+#### `{{twbs-form}}`
+
+A standard HTML form with the Bootstrap3 `.form` class assigned.  Provide a block
+with all the form-groups and inputs that you want inside the form container.  The
+`twbs-form` component accepts a `submit` and `reset` property both of which
+should take in a closure function.
+
+##### Arguments
+
+* `submit` (OPTIONAL) - the action that will be fired if the form happens to
+be submitted by a basic submit button or by pressing enter while focused on
+an input.  Ideal for posting model changes.
+* `reset` (OPTIONAL) - the action the will be fired when the form is reset by 
+clicking on a basic reset button.  Ideal for rolling back model changes.
+
+###### Examples
+
+[Check out the demo application](http://ember-data-bootstrap3-forms.cybertooth.io/)    
+
 #### `{{twbs-errors-alert}}`
 
 A Bootstrap3 _alert_ box that contains a list of model errors.  You provide a block to the component, it will be
@@ -68,16 +87,6 @@ will be ignored and not presented in the list.  **If you specify both an `includ
 should be included in the list.
 * `classNames` (OPTIONAL) - use the `classNames` argument to pass an alert style to the errors alert.  For example,
 `alert-danger` or `alert-warning`.
-
-##### Examples
-
-[Check out the demo application](http://ember-data-bootstrap3-forms.cybertooth.io/)
-
-#### `{{twbs-errors-alert-dismissable}}`
-
-_COMING SOON_
-
-##### Arguments
 
 ##### Examples
 
