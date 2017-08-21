@@ -2,7 +2,6 @@ machine:
   node:
     version: 6
 
-
 dependencies:
   pre:
     # This makes sure Chrome is always up to date in your test suite
