@@ -22,3 +22,6 @@ test:
     - node_modules/.bin/ember try:one ember-lts-2.4 test --skip-cleanup
     - node_modules/.bin/ember try:one ember-lts-2.8 test --skip-cleanup
     - node_modules/.bin/ember try:one ember-default test --skip-cleanup
+    - node_modules/.bin/ember try:one ember-release test --skip-cleanup
+    - node_modules/.bin/ember try:one ember-beta test --skip-cleanup
+    - node_modules/.bin/ember try:one ember-canary test --skip-cleanup
