@@ -5,11 +5,8 @@ machine:
 dependencies:
   cache_directories:
     - '~/.npm'
-    - '~/.yarn-cache'
     - '~/.cache'  # includes bowers cache
   pre:
-    # print the yarn cache dir so that you can use this information to add to your cache_directories
-    - yarn cache dir
     # Turn off npm spinner & feedback
     - npm config set spin false
     - npm install -g bower
@@ -23,3 +20,7 @@ dependencies:
     - rm google-chrome.deb
   post:
     - bower install
+test:
+  override:
+    - case $CIRCLE_NODE_INDEX in 0) node_modules/.bin/ember try:one ember-lts-2.4 --skip-cleanup ;; 1) node_modules/.bin/ember try:one ember-lts-2.8 --skip-cleanup ;; 2) node_modules/.bin/ember try:one ember-lts-2.12 --skip-cleanup ;; 3) node_modules/.bin/ember try:one ember-lts-default --skip-cleanup ;; esac:
+        parallel: true
