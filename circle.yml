@@ -9,6 +9,7 @@ dependencies:
   pre:
     # Turn off npm spinner & feedback
     - npm config set spin false
+    - npm install -g bower
     # This makes sure Chrome is always up to date in your test suite
     # On average this adds about 10 seconds to your build suite
     # Be sure to use Ubuntu 14.04 (Trusty) in the CircleCI's OS setting (Settings > Build Environment)
@@ -17,6 +18,8 @@ dependencies:
     - sudo dpkg -i google-chrome.deb
     - sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
     - rm google-chrome.deb
+  post:
+    - bower install
 test:
   override:
     - node_modules/.bin/ember try:one ember-lts-2.4 test --skip-cleanup
