@@ -13,11 +13,15 @@ The demonstration web application can be found here:
 
 This addon supplies the following _components_:
 
-* [`{{twbs-errors-alert}}`](#twbs-errors-alert) - a component that listens to a single model's errors and prepares a bootstrap alert box
-with all of the items in an unordered list.
-* `{{twbs-errors-alert-dismissable}}` - _COMING SOON_
-* [`{{twbs-form-group}}`](#twbs-form-group) - a component generating a Bootstrap `<div class="form-group">...</div>` that will watch
-for errors on a particular field and then apply the `.has-error` class.
+* [`{{twbs-errors-alert}}`](#twbs-errors-alert) - a component that listens to a single model's errors 
+and prepares a bootstrap alert box with the fields you want in a bulleted list.
+* [`{{twbs-form}}`](#twbs-form) - a component that creates a form element that you can easily bind
+the submit and reset action to.  Then all you need to do is add a submit and/or reset button to your
+form.
+* [`{{twbs-form-group}}`](#twbs-form-group) - a component generating a Bootstrap 
+`<div class="form-group">...</div>` that has intelligence built in to detect when it's
+field enters the error-state; the `.has-error` class will be applied and error messages will be
+appended to the bottom of the component's template.
 
 _Further information about these items can be found in the Usage section below._
 
@@ -25,6 +29,8 @@ _Further information about these items can be found in the Usage section below._
 
 * Ember >= 1.13.0
 * Ember CLI
+* Ember Data - the `twbs-errors-alert` & `twbs-form-group` components depend on Ember Data's
+modeling of errors.
 * You should have Bootstrap 3.x installed in your Ember application.  Feel free to use the
   [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
   addon to setup Bootstrap if you haven't already done so.
@@ -33,7 +39,9 @@ _Further information about these items can be found in the Usage section below._
 
 The following will install this addon:
 
-    $ ember install ember-data-bootstrap3-forms
+```
+ember install ember-data-bootstrap3-forms
+```
 
 **As mentioned, you should install Bootstrap3 in order for the correct styling to be applied.  Refer to the 
 requirements section above.**
@@ -115,7 +123,8 @@ the following: `model.errors.firstName`.
 
 ### Troubleshooting And Tips
 
-1.
+1. Do you have Ember Data in your application and are using it for your data modeling?
+1. Is Bootstrap 3 installed?  As the addon's name states, this isn't Bootstrap 4 ready.
 
 ---
 
@@ -123,8 +132,23 @@ the following: `model.errors.firstName`.
 
 ## Setup
 
-* `git clone git@github.com:cybertoothca/ember-data-bootstrap3-forms.git`
-* `npm install`
+### Checkout
+
+```
+$ git clone git@github.com:cybertoothca/ember-data-bootstrap3-forms.git
+```
+
+### With NPM
+
+```
+npm install
+```
+
+### With Yarn
+
+```
+yarn
+```
 
 ## Running The Dummy Application
 
@@ -174,10 +198,19 @@ in your _other_ project's `package.json`.
 Make sure your `~/.aws/credentials` file has a profile named _cybertooth_ 
 with a valid key and secret,
 
-    [cybertooth]
-    aws_access_key_id = <KEY>
-    aws_secret_access_key = <SECRET>
+```
+[cybertooth]
+aws_access_key_id = <KEY>
+aws_secret_access_key = <SECRET>
+```
 
 Deploy by invoking the following command: `ember deploy production`
 
 Confirm your changes are showing up in our S3 container: http://ember-data-bootstrap3-forms.cybertooth.io/
+
+# Releasing & Publishing To NPM
+
+```
+npm version x.y.z-sub.#
+npm publish
+```

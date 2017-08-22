@@ -5,6 +5,7 @@ machine:
 dependencies:
   cache_directories:
     - '~/.npm'
+    - '~/.yarn-cache'
     - '~/.cache'  # includes bowers cache
   pre:
     # Turn off npm spinner & feedback
@@ -20,11 +21,3 @@ dependencies:
     - rm google-chrome.deb
   post:
     - bower install
-test:
-  override:
-    - node_modules/.bin/ember try:one ember-lts-2.4 test --skip-cleanup
-    - node_modules/.bin/ember try:one ember-lts-2.8 test --skip-cleanup
-    - node_modules/.bin/ember try:one ember-default test --skip-cleanup
-    - node_modules/.bin/ember try:one ember-release test --skip-cleanup
-#    - node_modules/.bin/ember try:one ember-beta test --skip-cleanup
-#    - node_modules/.bin/ember try:one ember-canary test --skip-cleanup

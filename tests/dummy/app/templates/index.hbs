@@ -1,10 +1,3 @@
-<section class="container">
-  <h1>
-    ember-data-bootstrap3-forms
-    <img src="https://badge.fury.io/js/ember-data-bootstrap3-forms.svg" alt="ember-data-bootstrap3-forms npm"/>
-  </h1>
-</section>
-
 {{!--
 <section class="container">
   <h2><code>\{{hidden-submit}}</code> Button</h2>
@@ -68,17 +61,25 @@ export default Ember.Route.extend({
     <div class="row">
       <div class="col-sm-6">
         {{#twbs-form submit=(route-action "submitForm")}}
-          <button class="btn btn-default">Submit This Form</button>
+          <button class="btn btn-primary">Submit This Form</button>
         {{/twbs-form}}
       </div>
       <div class="col-sm-6">
+        {{!-- @formatter:off --}}
 <pre>\{{#twbs-form submit=(route-action "submitForm")}}
-  &lt;button class="btn btn-default">Submit This Form&lt;/button>
-  \{{/twbs-form}}
+  &lt;button class="btn btn-default">
+    Submit This Form
+  &lt;/button>
+\{{/twbs-form}}
 </pre>
-        <p>
-          <em>Notice that I'm using the clever `ember-route-action-helper` in this example. You can call
-            regular component actions too.</em>
+        {{!-- @formatter:on --}}
+        <p class="text-muted">
+          <em>
+            Notice that I'm using the clever
+            <a href="https://github.com/DockYard/ember-route-action-helper"
+               target="_blank">`ember-route-action-helper`</a>
+            in this example. You can call regular component actions too.
+          </em>
         </p>
       </div>
     </div>
@@ -91,13 +92,21 @@ export default Ember.Route.extend({
         {{/twbs-form}}
       </div>
       <div class="col-sm-6">
+        {{!-- @formatter:off --}}
 <pre>\{{#twbs-form reset=(route-action "resetForm")}}
-  &lt;button class="btn btn-default">Reset This Form&lt;/button>
-  \{{/twbs-form}}
+  &lt;button class="btn btn-default">
+    Reset This Form
+  &lt;/button>
+\{{/twbs-form}}
 </pre>
-        <p>
-          <em>Notice that I'm using the clever `ember-route-action-helper` in this example. You can call
-            regular component actions too.</em>
+        {{!-- @formatter:on --}}
+        <p class="text-muted">
+          <em>
+            Notice that I'm using the clever
+            <a href="https://github.com/DockYard/ember-route-action-helper"
+               target="_blank">`ember-route-action-helper`</a>
+            in this example. You can call regular component actions too.
+          </em>
         </p>
       </div>
     </div>
