@@ -5,7 +5,7 @@ machine:
 dependencies:
   cache_directories:
     - '~/.npm'
-    - '~/.cache'  # includes bowers cache
+    - '~/.cache'  # includes bower & yarn
   pre:
     # Turn off npm spinner & feedback
     - npm config set spin false
@@ -22,5 +22,5 @@ dependencies:
     - bower install
 test:
   override:
-    - case $CIRCLE_NODE_INDEX in 0) node_modules/.bin/ember try:one ember-lts-2.4 --skip-cleanup ;; 1) node_modules/.bin/ember try:one ember-lts-2.8 --skip-cleanup ;; 2) node_modules/.bin/ember try:one ember-lts-2.12 --skip-cleanup ;; 3) node_modules/.bin/ember try:one ember-lts-default --skip-cleanup ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) node_modules/.bin/ember try:one ember-lts-2.4 --skip-cleanup; node_modules/.bin/ember try:one ember-lts-2.8 --skip-cleanup; ;; 1) node_modules/.bin/ember try:one ember-lts-2.12 --skip-cleanup; node_modules/.bin/ember try:one ember-default --skip-cleanup ;; 2)  node_modules/.bin/ember try:one ember-release --skip-cleanup; node_modules/.bin/ember try:one ember-beta --skip-cleanup ;; 3) node_modules/.bin/ember try:one ember-canary --skip-cleanup ;; esac:
         parallel: true
