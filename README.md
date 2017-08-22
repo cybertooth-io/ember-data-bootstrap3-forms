@@ -223,5 +223,7 @@ Confirm your changes are showing up in our S3 container: http://ember-data-boots
 
 ```
 npm version x.y.z-sub.#
+git push
+git push --tags
 npm publish
 ```
