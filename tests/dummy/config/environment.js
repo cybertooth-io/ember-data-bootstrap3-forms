@@ -43,7 +43,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-// eslint-disable-next-line
+    // eslint-disable-next-line
   }
 
   return ENV;

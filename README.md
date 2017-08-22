@@ -125,7 +125,6 @@ the following: `model.errors.firstName`.
 
 * `git clone git@github.com:cybertoothca/ember-data-bootstrap3-forms.git`
 * `npm install`
-* `bower install`
 
 ## Running The Dummy Application
 
