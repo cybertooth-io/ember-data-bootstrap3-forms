@@ -1,8 +1,19 @@
-# ember-data-bootstrap3-forms [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms) ![](http://embadge.io/v1/badge.svg?start=1.13.0)
+# ember-data-bootstrap3-forms [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-data-bootstrap3-forms)
 
 [![npm version](http://badge.fury.io/js/ember-data-bootstrap3-forms.svg)](http://badge.fury.io/js/ember-data-bootstrap3-forms) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-data-bootstrap3-forms/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-data-bootstrap3-forms) ![Dependencies](http://david-dm.org/cybertoothca/ember-data-bootstrap3-forms.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-data-bootstrap3-forms.svg)](http://emberobserver.com/addons/ember-data-bootstrap3-forms) [![License](http://img.shields.io/npm/l/ember-data-bootstrap3-forms.svg)](LICENSE.md)
 
 This addon helps present your Ember-Data model errors in a consistent fashion using Bootstrap3 alerts and help-blocks.
+
+## Tested Against
+
+![https://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms](https://img.shields.io/badge/ember--try-ember--lts--2.4-brightgreen.svg)
+![https://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms](https://img.shields.io/badge/ember--try-ember--lts--2.8-brightgreen.svg)
+![https://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms](https://img.shields.io/badge/ember--try-ember--lts--2.12-brightgreen.svg)
+
+![https://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms](https://img.shields.io/badge/ember--try-ember--release-brightgreen.svg)
+![https://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms](https://img.shields.io/badge/ember--try-ember--beta-brightgreen.svg)
+![https://circleci.com/gh/cybertoothca/ember-data-bootstrap3-forms](https://img.shields.io/badge/ember--try-ember--canary-brightgreen.svg)
+
 
 ## Demo
 
