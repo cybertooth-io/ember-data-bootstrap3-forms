@@ -8,6 +8,8 @@ dependencies:
     - '~/.yarn-cache'
     - '~/.cache'  # includes bowers cache
   pre:
+    # print the yarn cache dir so that you can use this information to add to your cache_directories
+    - yarn cache dir
     # Turn off npm spinner & feedback
     - npm config set spin false
     - npm install -g bower
