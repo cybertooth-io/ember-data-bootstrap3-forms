@@ -9,4 +9,4 @@ ember install ember-cli-font-awesome-sass
 ember install ember-data@2.14
 ember install ember-route-action-helper
 
-npm install bootswatch@3.3
+npm install --save-dev bootswatch@3.3
