@@ -1,6 +1,6 @@
 {
   "name": "ember-data-bootstrap3-forms",
-  "version": "1.0.0-rc.1",
+  "version": "2.15.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
