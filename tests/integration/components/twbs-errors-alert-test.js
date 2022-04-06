@@ -1,6 +1,6 @@
+import { run } from '@ember/runloop';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 
 moduleForComponent('twbs-errors-alert', 'Integration | Component | twbs errors alert', {
   integration: true,
@@ -25,7 +25,7 @@ test('when no errors are present but the excludes was supplied the alert div is 
 });
 
 test('when passed a block it is placed inside the p element', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
   });
 
@@ -36,7 +36,7 @@ test('when passed a block it is placed inside the p element', function (assert) 
 });
 
 test('when passed a model with some errors', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
     this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
     this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
@@ -51,7 +51,7 @@ test('when passed a model with some errors', function (assert) {
 });
 
 test('when including only the someString errors', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
     this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
     this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
@@ -64,7 +64,7 @@ test('when including only the someString errors', function (assert) {
 });
 
 test('when including multiple error fields', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
     this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
     this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
@@ -78,7 +78,7 @@ test('when including multiple error fields', function (assert) {
 });
 
 test('when excluding the someNumber errors', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
     this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
     this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
@@ -93,7 +93,7 @@ test('when excluding the someNumber errors', function (assert) {
 
 
 test('when excluding multiple error fields', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
     this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
     this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');
@@ -106,7 +106,7 @@ test('when excluding multiple error fields', function (assert) {
 });
 
 test('when excluding and including at the same time, exclusions take precedence', function (assert) {
-  Ember.run(() => {
+  run(() => {
     this.set('model', this.store.createRecord('demo-model'));
     this.get('model.errors')._add('someBoolean', 'An error in the someBoolean field.');
     this.get('model.errors')._add('someNumber', 'An error in the someNumber field.');

@@ -1,6 +1,6 @@
+import { run } from '@ember/runloop';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 
 moduleForComponent('twbs-form-group', 'Integration | Component | twbs form group', {
   integration: true,
@@ -26,7 +26,7 @@ test('when field errors are not supplied then simply behave as a form-group', fu
 });
 
 test('when field errors are empty', function (assert) {
-  Ember.run(() => {
+  run(() => {
     const model = this.store.createRecord('demo-model');
     this.set('fieldErrors', model.get('errors.anotherString'));
   });
@@ -45,7 +45,7 @@ test('when field errors are empty', function (assert) {
 });
 
 test('when field errors are empty', function (assert) {
-  Ember.run(() => {
+  run(() => {
     const model = this.store.createRecord('demo-model');
     this.set('model', model);
   });
@@ -65,7 +65,7 @@ test('when field errors are empty', function (assert) {
 
 test('when a single error is present', function (assert) {
   let model;
-  Ember.run(() => {
+  run(() => {
     model = this.store.createRecord('demo-model');
     this.set('model', model);
   });
@@ -78,7 +78,7 @@ test('when a single error is present', function (assert) {
     {{/twbs-form-group}}
   `);
 
-  Ember.run(() => {
+  run(() => {
     model.get('errors')._add('anotherString', 'Some sort of error.');
   });
 
@@ -91,7 +91,7 @@ test('when a single error is present', function (assert) {
 
 test('when multiple errors are present', function (assert) {
   let model;
-  Ember.run(() => {
+  run(() => {
     model = this.store.createRecord('demo-model');
     this.set('model', model);
   });
@@ -104,7 +104,7 @@ test('when multiple errors are present', function (assert) {
     {{/twbs-form-group}}
   `);
 
-  Ember.run(() => {
+  run(() => {
     model.get('errors')._add('anotherString', 'Some sort of error.');
     model.get('errors')._add('anotherString', 'Another kind of error.');
   });
@@ -121,7 +121,7 @@ test('when multiple errors are present', function (assert) {
 
 test("when an error is present among other field's errors", function (assert) {
   let model;
-  Ember.run(() => {
+  run(() => {
     model = this.store.createRecord('demo-model');
     this.set('model', model);
   });
@@ -134,7 +134,7 @@ test("when an error is present among other field's errors", function (assert) {
     {{/twbs-form-group}}
   `);
 
-  Ember.run(() => {
+  run(() => {
     model.get('errors')._add('anotherString', 'Some sort of error.');
     model.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
     model.get('errors')._add('someNumber', 'An error message about the someNumber attribute');

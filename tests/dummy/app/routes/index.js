@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   actions: {
     resetForm() {
       window.alert('Form Was Reset!  Rollback your model attributes that may have been dirtied.');
