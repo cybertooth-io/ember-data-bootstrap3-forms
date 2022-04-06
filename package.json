@@ -32,14 +32,14 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.3.0",
+    "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.1"
   },
   "devDependencies": {
     "bootswatch": "^3.3.7",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
-    "ember-cli": "~2.15.1",
+    "ember-cli": "~2.16.2",
     "ember-cli-bootstrap3-sass": "^1.0.6",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-deploy": "^1.0.1",
@@ -54,7 +54,7 @@
     "ember-cli-sass": "^7.0.0",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
+    "ember-cli-uglify": "^2.0.0",
     "ember-cli-update": "0.33",
     "ember-data": "2.14",
     "ember-disable-prototype-extensions": "^1.1.2",
@@ -62,7 +62,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-route-action-helper": "^2.0.6",
-    "ember-source": "~2.15.0",
+    "ember-source": "~2.16.0",
     "ember-welcome-page": "^3.0.0",
     "loader.js": "^4.2.3"
   },
