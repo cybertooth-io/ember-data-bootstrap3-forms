@@ -118,6 +118,10 @@ component is watching that particular view of the errors.
 1. Do you have Ember Data in your application and are using it for your data modeling?
 1. Is Bootstrap 3 installed? As the addon's name states, this isn't Bootstrap 4 ready.
 
+## Contributing
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md).
