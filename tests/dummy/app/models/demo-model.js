@@ -1,11 +1,16 @@
+import Model, { attr } from '@ember-data/model';
 import { observer } from '@ember/object';
-import DS from 'ember-data';
 
-export default DS.Model.extend({
-  anotherString: DS.attr('string'),
-  someBoolean: DS.attr('boolean'),
-  someNumber: DS.attr('number'),
-  someString: DS.attr('string'),
+export default Model.extend({
+  anotherString: attr('string'),
+
+  someBoolean: attr('boolean'),
+
+  someNumber: attr('number'),
+
+  someString: attr('string'),
+
+  // eslint-disable-next-line ember/no-observers
   _addErrorToAnotherString: observer('anotherString', function () {
     if (this.anotherString === 'error') {
       this.errors._add('anotherString', 'Now change the text to error2 to add a second');

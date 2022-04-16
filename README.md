@@ -10,9 +10,11 @@ This addon helps present your Ember-Data model errors in a consistent fashion us
 
 - Ember.js v2.18 or above
 - Ember CLI v2.13 or above
-- Ember Data - the `twbs-errors-alert` & `twbs-form-group` components depend on Ember Data's
+- Node.js v8 or above
+
+* Ember Data - the `twbs-errors-alert` & `twbs-form-group` components depend on Ember Data's
   modeling of errors.
-- You should have Bootstrap 3.x
+* You should have Bootstrap 3.x
 
 ## Installation
 
