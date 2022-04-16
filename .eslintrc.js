@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: 2018,
     sourceType: 'module',
   },
   plugins: ['ember'],
@@ -14,6 +14,7 @@ module.exports = {
     // node files
     {
       files: [
+        '.eslintrc.js',
         '.template-lintrc.js',
         'ember-cli-build.js',
         'index.js',
@@ -23,7 +24,6 @@ module.exports = {
         'tests/dummy/config/**/*.js',
       ],
       excludedFiles: ['addon/**', 'addon-test-support/**', 'app/**', 'tests/dummy/app/**'],
-      excludedFiles: ['app/**', 'addon/**', 'tests/dummy/app/**'],
       parserOptions: {
         sourceType: 'script',
         ecmaVersion: 2015,

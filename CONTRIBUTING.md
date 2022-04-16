@@ -2,26 +2,27 @@
 
 ## Installation
 
-- `git clone <repository-url>`
-- `cd ember-cli-text-support-mixins`
-- `yarn install`
+```
+* `git clone <repository-url>`
+* `cd ember-data-bootstrap3-forms`
+* `yarn install`
 
 ## Linting
 
-- `yarn lint:hbs`
-- `yarn lint:js`
-- `yarn lint:js --fix`
+* `yarn lint:hbs`
+* `yarn lint:js`
+* `yarn lint:js --fix`
 
 ## Running tests
 
-- `ember test` – Runs the test suite on the current Ember version
-- `ember test --server` – Runs the test suite in "watch mode"
-- `ember try:each` – Runs the test suite against multiple Ember versions
+* `ember test` – Runs the test suite on the current Ember version
+* `ember test --server` – Runs the test suite in "watch mode"
+* `ember try:each` – Runs the test suite against multiple Ember versions
 
 ## Running the dummy application
 
-- `ember serve`
-- Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
@@ -57,9 +58,11 @@ Make sure your `~/.aws/credentials` file has a profile named _cybertooth_
 with a valid key and secret,
 
 ```
+
 [cybertooth]
 aws_access_key_id = <KEY>
 aws_secret_access_key = <SECRET>
+
 ```
 
 Deploy by invoking the following command: `ember deploy production`
@@ -69,8 +72,8 @@ Confirm your changes are showing up in our S3 container: http://ember-data-boots
 # Releasing & Publishing To NPM
 
 ```
+
 npm version x.y.z-sub.#
 git push
 git push --tags
 npm publish
-```

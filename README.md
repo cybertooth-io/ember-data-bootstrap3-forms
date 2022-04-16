@@ -6,19 +6,17 @@
 
 This addon helps present your Ember-Data model errors in a consistent fashion using Bootstrap3 alerts and help-blocks.
 
-## Requirements
+## Compatibility
 
-- Ember >= 1.13.0
-- Ember CLI
-- Ember Data - the `twbs-errors-alert` & `twbs-form-group` components depend on Ember Data's
+- Ember.js v2.18 or above
+- Ember CLI v2.13 or above
+- Node.js v8 or above
+
+* Ember Data - the `twbs-errors-alert` & `twbs-form-group` components depend on Ember Data's
   modeling of errors.
-- You should have Bootstrap 3.x installed in your Ember application. Feel free to use the
-  [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
-  addon to setup Bootstrap if you haven't already done so.
+* You should have Bootstrap 3.x
 
 ## Installation
-
-The following will install this addon:
 
 ```
 ember install ember-data-bootstrap3-forms
@@ -122,36 +120,9 @@ component is watching that particular view of the errors.
 1. Do you have Ember Data in your application and are using it for your data modeling?
 1. Is Bootstrap 3 installed? As the addon's name states, this isn't Bootstrap 4 ready.
 
-```
-ember install my-addon
-```
-
 ## Contributing
 
-### Installation
-
-- `git clone <repository-url>`
-- `cd my-addon`
-- `npm install`
-
-### Linting
-
-- `yarn lint:hbs`
-- `yarn lint:js`
-- `yarn lint:js --fix`
-
-### Running tests
-
-- `ember test` – Runs the test suite on the current Ember version
-- `ember test --server` – Runs the test suite in "watch mode"
-- `ember try:each` – Runs the test suite against multiple Ember versions
-
-### Running the dummy application
-
-- `ember serve`
-- Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## License
 
