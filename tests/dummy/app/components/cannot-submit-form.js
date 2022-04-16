@@ -7,9 +7,9 @@ export default Component.extend({
     submit() {
       this.results.pushObject('Submitted On-Enter');
       return true;
-    }
+    },
   },
   classNames: ['row'],
   layout,
-  results: A()
+  results: A(),
 });

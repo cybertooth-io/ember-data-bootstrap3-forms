@@ -8,19 +8,14 @@
   </div>
 </div>
 <div class="col-sm-6">
-  {{!-- @formatter:off --}}
-<pre>&lt;div class="form">
-  \{{#twbs-form-group fieldErrors=model.errors.anotherString}}
-    &lt;label for="js-some-string" class="control-label">
-      Another String
-    &lt;/label>
-    \{{input
-       class="form-control" type="text"
-       value=model.anotherString
-     }}
-    &lt;p class="help-block">Type the word <em>error</em> to add an error to the field.&lt;/p>
-  \{{/twbs-form-group}}
-&lt;/div>
-  {{!-- @formatter:on --}}
-</pre>
+  {{! @formatter:off }}
+  <pre>&lt;div class="form">
+    \{{#twbs-form-group fieldErrors=model.errors.anotherString}} &lt;label for="js-some-string" class="control-label">
+    Another String &lt;/label>
+    \{{input class="form-control" type="text" value=model.anotherString }} &lt;p class="help-block">Type the word
+    <em>error</em>
+    to add an error to the field.&lt;/p>
+    \{{/twbs-form-group}} &lt;/div>
+    {{! @formatter:on }}
+  </pre>
 </div>

@@ -3,27 +3,27 @@ engines:
   duplication:
     enabled: true
     exclude_fingerprints:
-    - e42f9c8eb7e8a987cdc6f54fc0795a6d
+      - e42f9c8eb7e8a987cdc6f54fc0795a6d
     config:
       languages:
-      - ruby
-      - javascript
-      - python
-      - php
+        - ruby
+        - javascript
+        - python
+        - php
   eslint:
     enabled: true
   fixme:
     enabled: true
 ratings:
   paths:
-  - "**.inc"
-  - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
-  - "**.rb"
+    - '**.inc'
+    - '**.js'
+    - '**.jsx'
+    - '**.module'
+    - '**.php'
+    - '**.py'
+    - '**.rb'
 exclude_paths:
-- config/
-- tests/
-- vendor/
+  - config/
+  - tests/
+  - vendor/

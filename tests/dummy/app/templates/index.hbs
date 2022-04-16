@@ -11,30 +11,17 @@
   <h2>A Simulated Model With Errors</h2>
   <p><em>Assume the following for these examples...</em></p>
 
-  <pre>// ----------------------------------------------------------------------- app/models/demo-model.js
-import DS from 'ember-data';
-
-export default DS.Model.extend({
-  anotherString: DS.attr('string')
-  someBoolean: DS.attr('boolean'),
-  someNumber: DS.attr('number'),
-  someString: DS.attr('string')
-});
-
-// ----------------------------------------------------------------------- app/routes/some-route.js
-import Ember from 'ember';
-
-export default Ember.Route.extend({
-  /** For this demo we've hard-coded errors into each of the model's fields */
-  model() {
-    const demoModel = this.get('store').createRecord('demo-model');
+  <pre>// ----------------------------------------------------------------------- app/models/demo-model.js import DS
+    from 'ember-data'; export default DS.Model.extend({ anotherString: DS.attr('string') someBoolean:
+    DS.attr('boolean'), someNumber: DS.attr('number'), someString: DS.attr('string') }); //
+    ----------------------------------------------------------------------- app/routes/some-route.js import Ember from
+    'ember'; export default Ember.Route.extend({ /** For this demo we've hard-coded errors into each of the model's
+    fields */ model() { const demoModel = this.get('store').createRecord('demo-model');
     demoModel.get('errors').add('someBoolean', 'An error message about the someBoolean attribute');
     demoModel.get('errors').add('someNumber', 'An error message about the someNumber attribute');
-    demoModel.get('errors').add('someString', 'An error message about the someString attribute');
-    return demoModel;
-  }
-});
-</pre>
+    demoModel.get('errors').add('someString', 'An error message about the someString attribute'); return demoModel; }
+    });
+  </pre>
   <h2>Model Errors Alert</h2>
 
   <h3>Show All Errors From A Model</h3>
@@ -65,19 +52,18 @@ export default Ember.Route.extend({
         {{/twbs-form}}
       </div>
       <div class="col-sm-6">
-        {{!-- @formatter:off --}}
-<pre>\{{#twbs-form submit=(route-action "submitForm")}}
-  &lt;button class="btn btn-default">
-    Submit This Form
-  &lt;/button>
-\{{/twbs-form}}
-</pre>
-        {{!-- @formatter:on --}}
+        {{! @formatter:off }}
+        <pre>\{{#twbs-form submit=(route-action "submitForm")}} &lt;button class="btn btn-default"> Submit This Form
+          &lt;/button>
+          \{{/twbs-form}}
+        </pre>
+        {{! @formatter:on }}
         <p class="text-muted">
           <em>
             Notice that I'm using the clever
-            <a href="https://github.com/DockYard/ember-route-action-helper"
-               target="_blank">`ember-route-action-helper`</a>
+            <a href="https://github.com/DockYard/ember-route-action-helper" rel="noopener noreferrer" target="_blank">
+              `ember-route-action-helper`
+            </a>
             in this example. You can call regular component actions too.
           </em>
         </p>
@@ -92,19 +78,18 @@ export default Ember.Route.extend({
         {{/twbs-form}}
       </div>
       <div class="col-sm-6">
-        {{!-- @formatter:off --}}
-<pre>\{{#twbs-form reset=(route-action "resetForm")}}
-  &lt;button class="btn btn-default">
-    Reset This Form
-  &lt;/button>
-\{{/twbs-form}}
-</pre>
-        {{!-- @formatter:on --}}
+        {{! @formatter:off }}
+        <pre>\{{#twbs-form reset=(route-action "resetForm")}} &lt;button class="btn btn-default"> Reset This Form
+          &lt;/button>
+          \{{/twbs-form}}
+        </pre>
+        {{! @formatter:on }}
         <p class="text-muted">
           <em>
             Notice that I'm using the clever
-            <a href="https://github.com/DockYard/ember-route-action-helper"
-               target="_blank">`ember-route-action-helper`</a>
+            <a href="https://github.com/DockYard/ember-route-action-helper" rel="noopener noreferrer" target="_blank">
+              `ember-route-action-helper`
+            </a>
             in this example. You can call regular component actions too.
           </em>
         </p>
