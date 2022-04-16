@@ -3,5 +3,5 @@ import layout from '../templates/components/demo-errors-alert-includes';
 
 export default Component.extend({
   classNames: ['row'],
-  layout
+  layout,
 });

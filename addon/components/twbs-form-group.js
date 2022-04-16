@@ -18,5 +18,5 @@ export default Component.extend({
   'hasError?': notEmpty('fieldErrors'),
   hasError: alias('hasError?'),
   layout,
-  tagName: 'div'
+  tagName: 'div',
 });

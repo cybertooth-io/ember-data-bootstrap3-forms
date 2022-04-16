@@ -7,7 +7,7 @@ export default Route.extend({
     },
     submitForm() {
       window.alert('Form Was Submitted!  POST/PATCH your model from the form.');
-    }
+    },
   },
   model() {
     const demoModel = this.store.createRecord('demo-model');
@@ -15,5 +15,5 @@ export default Route.extend({
     demoModel.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
     demoModel.get('errors')._add('someString', 'An error message about the someString attribute');
     return demoModel;
-  }
+  },
 });

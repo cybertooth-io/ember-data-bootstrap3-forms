@@ -14,5 +14,5 @@ export default DS.Model.extend({
     } else {
       this.errors._remove('anotherString');
     }
-  })
+  }),
 });

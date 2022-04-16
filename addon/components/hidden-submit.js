@@ -9,5 +9,5 @@ export default Component.extend({
   classNames: ['hidden-submit', 'sr-only'],
   layout,
   tagName: 'button',
-  type: 'submit'
+  type: 'submit',
 });
