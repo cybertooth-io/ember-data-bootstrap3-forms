@@ -6,19 +6,15 @@
 
 This addon helps present your Ember-Data model errors in a consistent fashion using Bootstrap3 alerts and help-blocks.
 
-## Requirements
+## Compatibility
 
-- Ember >= 1.13.0
-- Ember CLI
+- Ember.js v2.18 or above
+- Ember CLI v2.13 or above
 - Ember Data - the `twbs-errors-alert` & `twbs-form-group` components depend on Ember Data's
   modeling of errors.
-- You should have Bootstrap 3.x installed in your Ember application. Feel free to use the
-  [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
-  addon to setup Bootstrap if you haven't already done so.
+- You should have Bootstrap 3.x
 
 ## Installation
-
-The following will install this addon:
 
 ```
 ember install ember-data-bootstrap3-forms
