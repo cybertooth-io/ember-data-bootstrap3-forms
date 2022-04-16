@@ -1,7 +1,8 @@
-import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import { module, test } from 'qunit';
+
+import { render } from '@ember/test-helpers';
 
 module('Integration | Component | hidden submit', function (hooks) {
   setupRenderingTest(hooks);
@@ -14,9 +15,6 @@ module('Integration | Component | hidden submit', function (hooks) {
 
   test('button contains html comment concerning its purpose', async function (assert) {
     await render(hbs`{{hidden-submit}}`);
-    assert.equal(
-      find('button').innerHTML.trim(),
-      '<!-- This hidden submit button is used to help trigger form submits by pressing enter while focused on inputs -->'
-    );
+    assert.dom('button').hasNoText();
   });
 });
