@@ -14,16 +14,13 @@ export default Component.extend({
   layout,
   tagName: 'form',
   didInsertElement() {
-    const resetAction = this.reset;
-    if (isPresent(resetAction)) {
-      this.$()
-        .off('reset.twbs-form')
-        .on('reset.twbs-form', function () {
-          resetAction();
-        });
+    if (isPresent(this.reset)) {
+      this.element.addEventListener('reset', this.reset);
     }
   },
   willDestroyElement() {
-    this.$().off('reset.twbs-form');
+    if (isPresent(this.reset)) {
+      this.element.removeEventListener('reset', this.reset);
+    }
   },
 });
