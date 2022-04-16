@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/hidden-submit';
 
 /**
  * Requires the bootstrap .sr-only class.
  */
-export default Ember.Component.extend({
+export default Component.extend({
   attributeBindings: ['type'],
   classNames: ['hidden-submit', 'sr-only'],
   layout,

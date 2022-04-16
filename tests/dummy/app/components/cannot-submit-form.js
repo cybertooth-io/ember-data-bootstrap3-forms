@@ -1,14 +1,15 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
+import Component from '@ember/component';
 import layout from '../templates/components/cannot-submit-form';
 
-export default Ember.Component.extend({
+export default Component.extend({
   actions: {
     submit() {
-      this.get('results').pushObject('Submitted On-Enter');
+      this.results.pushObject('Submitted On-Enter');
       return true;
     }
   },
   classNames: ['row'],
   layout,
-  results: Ember.A()
+  results: A()
 });

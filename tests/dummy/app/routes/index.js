@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   actions: {
     resetForm() {
       window.alert('Form Was Reset!  Rollback your model attributes that may have been dirtied.');
@@ -10,7 +10,7 @@ export default Ember.Route.extend({
     }
   },
   model() {
-    const demoModel = this.get('store').createRecord('demo-model');
+    const demoModel = this.store.createRecord('demo-model');
     demoModel.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
     demoModel.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
     demoModel.get('errors')._add('someString', 'An error message about the someString attribute');
