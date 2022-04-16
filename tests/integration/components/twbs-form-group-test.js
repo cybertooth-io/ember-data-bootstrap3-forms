@@ -1,17 +1,18 @@
-import { run } from '@ember/runloop';
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, findAll, find } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { setupRenderingTest } from "ember-qunit";
+import hbs from "htmlbars-inline-precompile";
+import { module, test } from "qunit";
 
-module('Integration | Component | twbs form group', function(hooks) {
+import { run } from "@ember/runloop";
+import { findAll, render } from "@ember/test-helpers";
+
+module("Integration | Component | twbs form group", function (hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(function() {
-    this.store = this.owner.lookup('service:store');
+  hooks.beforeEach(function () {
+    this.store = this.owner.lookup("service:store");
   });
 
-  test('when field errors are not supplied then simply behave as a form-group', async function(assert) {
+  test("when field errors are not supplied then simply behave as a form-group", async function (assert) {
     await render(hbs`
       {{#twbs-form-group}}
         <label for="js-some-text" class="control-label">Some Text</label>
@@ -19,18 +20,20 @@ module('Integration | Component | twbs form group', function(hooks) {
         <p class="help-block">Help about some text.</p>
       {{/twbs-form-group}}
     `);
-    assert.equal(findAll('.form-group').length, 1);
-    assert.equal(findAll('.form-group.has-error').length, 0);
-    assert.equal(findAll('.form-group > label.control-label').length, 1);
-    assert.equal(findAll('.form-group > input.form-control').length, 1);
-    assert.equal(findAll('.form-group > .help-block').length, 1);
-    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 0);
+    assert.dom(".form-group").exists({ count: 1 });
+    assert.dom(".form-group.has-error").doesNotExist();
+    assert.dom(".form-group > label.control-label").exists({ count: 1 });
+    assert.dom(".form-group > input.form-control").exists({ count: 1 });
+    assert.dom(".form-group > .help-block").exists({ count: 1 });
+    assert
+      .dom(".form-group > .help-block.twbs-form-group-errors")
+      .doesNotExist();
   });
 
-  test('when field errors are empty', async function(assert) {
+  test("when field errors are empty", async function (assert) {
     run(() => {
-      const model = this.store.createRecord('demo-model');
-      this.set('fieldErrors', model.get('errors.anotherString'));
+      const model = this.store.createRecord("demo-model");
+      this.set("fieldErrors", model.get("errors.anotherString"));
     });
 
     await render(hbs`
@@ -41,15 +44,17 @@ module('Integration | Component | twbs form group', function(hooks) {
       {{/twbs-form-group}}
     `);
 
-    assert.equal(findAll('.form-group').length, 1);
-    assert.equal(findAll('.form-group.has-error').length, 0);
-    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 0);
+    assert.dom(".form-group").exists({ count: 1 });
+    assert.dom(".form-group.has-error").doesNotExist();
+    assert
+      .dom(".form-group > .help-block.twbs-form-group-errors")
+      .doesNotExist();
   });
 
-  test('when field errors are empty', async function(assert) {
+  test("when field errors are empty", async function (assert) {
     run(() => {
-      const model = this.store.createRecord('demo-model');
-      this.set('model', model);
+      const model = this.store.createRecord("demo-model");
+      this.set("model", model);
     });
 
     await render(hbs`
@@ -60,16 +65,18 @@ module('Integration | Component | twbs form group', function(hooks) {
       {{/twbs-form-group}}
     `);
 
-    assert.equal(findAll('.form-group').length, 1);
-    assert.equal(findAll('.form-group.has-error').length, 0);
-    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 0);
+    assert.dom(".form-group").exists({ count: 1 });
+    assert.dom(".form-group.has-error").doesNotExist();
+    assert
+      .dom(".form-group > .help-block.twbs-form-group-errors")
+      .doesNotExist();
   });
 
-  test('when a single error is present', async function(assert) {
+  test("when a single error is present", async function (assert) {
     let model;
     run(() => {
-      model = this.store.createRecord('demo-model');
-      this.set('model', model);
+      model = this.store.createRecord("demo-model");
+      this.set("model", model);
     });
 
     await render(hbs`
@@ -81,23 +88,26 @@ module('Integration | Component | twbs form group', function(hooks) {
     `);
 
     run(() => {
-      model.get('errors')._add('anotherString', 'Some sort of error.');
+      model.get("errors")._add("anotherString", "Some sort of error.");
     });
 
-    assert.equal(findAll('.form-group').length, 1);
-    assert.equal(findAll('.form-group.has-error').length, 1);
-    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 1);
-    assert.equal(find(
-      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
-    ).textContent,
-      'Some sort of error.');
+    assert.dom(".form-group").exists({ count: 1 });
+    assert.dom(".form-group.has-error").exists({ count: 1 });
+    assert
+      .dom(".form-group > .help-block.twbs-form-group-errors")
+      .exists({ count: 1 });
+    assert
+      .dom(
+        ".form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message"
+      )
+      .hasText("Some sort of error.");
   });
 
-  test('when multiple errors are present', async function(assert) {
+  test("when multiple errors are present", async function (assert) {
     let model;
     run(() => {
-      model = this.store.createRecord('demo-model');
-      this.set('model', model);
+      model = this.store.createRecord("demo-model");
+      this.set("model", model);
     });
 
     await render(hbs`
@@ -109,31 +119,39 @@ module('Integration | Component | twbs form group', function(hooks) {
     `);
 
     run(() => {
-      model.get('errors')._add('anotherString', 'Some sort of error.');
-      model.get('errors')._add('anotherString', 'Another kind of error.');
+      model.get("errors")._add("anotherString", "Some sort of error.");
+      model.get("errors")._add("anotherString", "Another kind of error.");
     });
 
-    assert.equal(findAll('.form-group').length, 1);
-    assert.equal(findAll('.form-group.has-error').length, 1);
-    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 1);
-    assert.equal(findAll(
-      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
-    ).length, 2);
-    assert.equal(find(
-      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
-    ).textContent,
-      'Some sort of error.');
-    assert.equal(find(findAll(
-      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
-    )[1]).textContent,
-      'Another kind of error.');
+    assert.dom(".form-group").exists({ count: 1 });
+    assert.dom(".form-group.has-error").exists({ count: 1 });
+    assert
+      .dom(".form-group > .help-block.twbs-form-group-errors")
+      .exists({ count: 1 });
+    assert
+      .dom(
+        ".form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message"
+      )
+      .exists({ count: 2 });
+    assert
+      .dom(
+        ".form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message"
+      )
+      .hasText("Some sort of error.");
+    assert
+      .dom(
+        findAll(
+          ".form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message"
+        )[1]
+      )
+      .hasText("Another kind of error.");
   });
 
-  test("when an error is present among other field's errors", async function(assert) {
+  test("when an error is present among other field's errors", async function (assert) {
     let model;
     run(() => {
-      model = this.store.createRecord('demo-model');
-      this.set('model', model);
+      model = this.store.createRecord("demo-model");
+      this.set("model", model);
     });
 
     await render(hbs`
@@ -145,22 +163,35 @@ module('Integration | Component | twbs form group', function(hooks) {
     `);
 
     run(() => {
-      model.get('errors')._add('anotherString', 'Some sort of error.');
-      model.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
-      model.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
-      model.get('errors')._add('someString', 'An error message about the someString attribute');
-
+      model.get("errors")._add("anotherString", "Some sort of error.");
+      model
+        .get("errors")
+        ._add(
+          "someBoolean",
+          "An error message about the someBoolean attribute"
+        );
+      model
+        .get("errors")
+        ._add("someNumber", "An error message about the someNumber attribute");
+      model
+        .get("errors")
+        ._add("someString", "An error message about the someString attribute");
     });
 
-    assert.equal(findAll('.form-group').length, 1);
-    assert.equal(findAll('.form-group.has-error').length, 1);
-    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 1);
-    assert.equal(findAll(
-      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
-    ).length, 1);
-    assert.equal(find(
-      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
-    ).textContent,
-      'Some sort of error.');
+    assert.dom(".form-group").exists({ count: 1 });
+    assert.dom(".form-group.has-error").exists({ count: 1 });
+    assert
+      .dom(".form-group > .help-block.twbs-form-group-errors")
+      .exists({ count: 1 });
+    assert
+      .dom(
+        ".form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message"
+      )
+      .exists({ count: 1 });
+    assert
+      .dom(
+        ".form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message"
+      )
+      .hasText("Some sort of error.");
   });
 });

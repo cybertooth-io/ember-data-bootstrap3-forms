@@ -8,8 +8,8 @@ module('Integration | Component | hidden submit', function(hooks) {
 
   test("button is classed with `hidden-submit` and bootstrap's `sr-only`", async function(assert) {
     await render(hbs`{{hidden-submit}}`);
-    assert.ok(find('button').classList.contains('hidden-submit'));
-    assert.ok(find('button').classList.contains('sr-only'));
+    assert.dom('button').hasClass('hidden-submit');
+    assert.dom('button').hasClass('sr-only');
   });
 
   test('button contains html comment concerning its purpose', async function(assert) {

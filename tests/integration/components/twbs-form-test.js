@@ -2,7 +2,7 @@ import { setupRenderingTest } from "ember-qunit";
 import hbs from "htmlbars-inline-precompile";
 import { module, test } from "qunit";
 
-import { click, find, findAll, render } from "@ember/test-helpers";
+import { click, render } from "@ember/test-helpers";
 
 module("Integration | Component | twbs form", function (hooks) {
   setupRenderingTest(hooks);
@@ -15,9 +15,9 @@ module("Integration | Component | twbs form", function (hooks) {
       {{/twbs-form}}
     `);
 
-    assert.equal(findAll("form").length, 1);
-    assert.equal(find("form").getAttribute("action"), "javascript:void(0);"); // jshint ignore:line
-    assert.equal(findAll("form>button").length, 1);
+    assert.dom("form").exists({ count: 1 });
+    assert.dom("form").hasAttribute("action", "javascript:void(0);"); // jshint ignore:line
+    assert.dom("form>button").exists({ count: 1 });
   });
 
   test("when a submit button is clicked the assigned submit action is fired", async function (assert) {
@@ -34,7 +34,7 @@ module("Integration | Component | twbs form", function (hooks) {
     `);
 
     assert.notOk(actionInvoked);
-    assert.equal(findAll("form>button").length, 1);
+    assert.dom("form>button").exists({ count: 1 });
     await click("form>button");
     assert.ok(actionInvoked);
   });
@@ -53,7 +53,7 @@ module("Integration | Component | twbs form", function (hooks) {
     `);
 
     assert.notOk(actionInvoked);
-    assert.equal(findAll("form>button").length, 1);
+    assert.dom("form>button").exists({ count: 1 });
     await click("form>button");
     assert.notOk(actionInvoked);
   });
@@ -72,7 +72,7 @@ module("Integration | Component | twbs form", function (hooks) {
     `);
 
     assert.notOk(actionInvoked);
-    assert.equal(findAll("form>button").length, 1);
+    assert.dom("form>button").exists({ count: 1 });
     await click("form>button");
     assert.ok(actionInvoked);
   });
@@ -91,7 +91,7 @@ module("Integration | Component | twbs form", function (hooks) {
     `);
 
     assert.notOk(actionInvoked);
-    assert.equal(findAll("form>button").length, 1);
+    assert.dom("form>button").exists({ count: 1 });
     await click("form>button");
     assert.notOk(actionInvoked);
   });
