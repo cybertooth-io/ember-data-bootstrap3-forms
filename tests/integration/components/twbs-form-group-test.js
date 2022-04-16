@@ -1,151 +1,166 @@
 import { run } from '@ember/runloop';
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, findAll, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('twbs-form-group', 'Integration | Component | twbs form group', {
-  integration: true,
-  beforeEach() {
-    this.inject.service('store');
-  }
-});
+module('Integration | Component | twbs form group', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('when field errors are not supplied then simply behave as a form-group', function (assert) {
-  this.render(hbs`
-    {{#twbs-form-group}}
-      <label for="js-some-text" class="control-label">Some Text</label>
-      <input type="text" id="js-some-text" class="form-control" value=""/>
-      <p class="help-block">Help about some text.</p>
-    {{/twbs-form-group}}
-  `);
-  assert.equal(this.$('.form-group').length, 1);
-  assert.equal(this.$('.form-group.has-error').length, 0);
-  assert.equal(this.$('.form-group > label.control-label').length, 1);
-  assert.equal(this.$('.form-group > input.form-control').length, 1);
-  assert.equal(this.$('.form-group > .help-block').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors').length, 0);
-});
-
-test('when field errors are empty', function (assert) {
-  run(() => {
-    const model = this.store.createRecord('demo-model');
-    this.set('fieldErrors', model.get('errors.anotherString'));
+  hooks.beforeEach(function() {
+    this.store = this.owner.lookup('service:store');
   });
 
-  this.render(hbs`
-    {{#twbs-form-group fieldErrors=fieldErrors}}
-      <label for="js-some-text" class="control-label">Some Text</label>
-      <input type="text" id="js-some-text" class="form-control" value=""/>
-      <p class="help-block">Help about some text.</p>
-    {{/twbs-form-group}}
-  `);
-
-  assert.equal(this.$('.form-group').length, 1);
-  assert.equal(this.$('.form-group.has-error').length, 0);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors').length, 0);
-});
-
-test('when field errors are empty', function (assert) {
-  run(() => {
-    const model = this.store.createRecord('demo-model');
-    this.set('model', model);
+  test('when field errors are not supplied then simply behave as a form-group', async function(assert) {
+    await render(hbs`
+      {{#twbs-form-group}}
+        <label for="js-some-text" class="control-label">Some Text</label>
+        <input type="text" id="js-some-text" class="form-control" value=""/>
+        <p class="help-block">Help about some text.</p>
+      {{/twbs-form-group}}
+    `);
+    assert.equal(findAll('.form-group').length, 1);
+    assert.equal(findAll('.form-group.has-error').length, 0);
+    assert.equal(findAll('.form-group > label.control-label').length, 1);
+    assert.equal(findAll('.form-group > input.form-control').length, 1);
+    assert.equal(findAll('.form-group > .help-block').length, 1);
+    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 0);
   });
 
-  this.render(hbs`
-    {{#twbs-form-group fieldErrors=model.errors.anotherString}}
-      <label for="js-some-text" class="control-label">Some Text</label>
-      <input type="text" id="js-some-text" class="form-control" value=""/>
-      <p class="help-block">Help about some text.</p>
-    {{/twbs-form-group}}
-  `);
+  test('when field errors are empty', async function(assert) {
+    run(() => {
+      const model = this.store.createRecord('demo-model');
+      this.set('fieldErrors', model.get('errors.anotherString'));
+    });
 
-  assert.equal(this.$('.form-group').length, 1);
-  assert.equal(this.$('.form-group.has-error').length, 0);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors').length, 0);
-});
+    await render(hbs`
+      {{#twbs-form-group fieldErrors=fieldErrors}}
+        <label for="js-some-text" class="control-label">Some Text</label>
+        <input type="text" id="js-some-text" class="form-control" value=""/>
+        <p class="help-block">Help about some text.</p>
+      {{/twbs-form-group}}
+    `);
 
-test('when a single error is present', function (assert) {
-  let model;
-  run(() => {
-    model = this.store.createRecord('demo-model');
-    this.set('model', model);
+    assert.equal(findAll('.form-group').length, 1);
+    assert.equal(findAll('.form-group.has-error').length, 0);
+    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 0);
   });
 
-  this.render(hbs`
-    {{#twbs-form-group fieldErrors=model.errors.anotherString}}
-      <label for="js-some-text" class="control-label">Some Text</label>
-      <input type="text" id="js-some-text" class="form-control" value=""/>
-      <p class="help-block">Help about some text.</p>
-    {{/twbs-form-group}}
-  `);
+  test('when field errors are empty', async function(assert) {
+    run(() => {
+      const model = this.store.createRecord('demo-model');
+      this.set('model', model);
+    });
 
-  run(() => {
-    model.get('errors')._add('anotherString', 'Some sort of error.');
+    await render(hbs`
+      {{#twbs-form-group fieldErrors=model.errors.anotherString}}
+        <label for="js-some-text" class="control-label">Some Text</label>
+        <input type="text" id="js-some-text" class="form-control" value=""/>
+        <p class="help-block">Help about some text.</p>
+      {{/twbs-form-group}}
+    `);
+
+    assert.equal(findAll('.form-group').length, 1);
+    assert.equal(findAll('.form-group.has-error').length, 0);
+    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 0);
   });
 
-  assert.equal(this.$('.form-group').length, 1);
-  assert.equal(this.$('.form-group.has-error').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message').text(),
-    'Some sort of error.');
-});
+  test('when a single error is present', async function(assert) {
+    let model;
+    run(() => {
+      model = this.store.createRecord('demo-model');
+      this.set('model', model);
+    });
 
-test('when multiple errors are present', function (assert) {
-  let model;
-  run(() => {
-    model = this.store.createRecord('demo-model');
-    this.set('model', model);
+    await render(hbs`
+      {{#twbs-form-group fieldErrors=model.errors.anotherString}}
+        <label for="js-some-text" class="control-label">Some Text</label>
+        <input type="text" id="js-some-text" class="form-control" value=""/>
+        <p class="help-block">Help about some text.</p>
+      {{/twbs-form-group}}
+    `);
+
+    run(() => {
+      model.get('errors')._add('anotherString', 'Some sort of error.');
+    });
+
+    assert.equal(findAll('.form-group').length, 1);
+    assert.equal(findAll('.form-group.has-error').length, 1);
+    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 1);
+    assert.equal(find(
+      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
+    ).textContent,
+      'Some sort of error.');
   });
 
-  this.render(hbs`
-    {{#twbs-form-group fieldErrors=model.errors.anotherString}}
-      <label for="js-some-text" class="control-label">Some Text</label>
-      <input type="text" id="js-some-text" class="form-control" value=""/>
-      <p class="help-block">Help about some text.</p>
-    {{/twbs-form-group}}
-  `);
+  test('when multiple errors are present', async function(assert) {
+    let model;
+    run(() => {
+      model = this.store.createRecord('demo-model');
+      this.set('model', model);
+    });
 
-  run(() => {
-    model.get('errors')._add('anotherString', 'Some sort of error.');
-    model.get('errors')._add('anotherString', 'Another kind of error.');
+    await render(hbs`
+      {{#twbs-form-group fieldErrors=model.errors.anotherString}}
+        <label for="js-some-text" class="control-label">Some Text</label>
+        <input type="text" id="js-some-text" class="form-control" value=""/>
+        <p class="help-block">Help about some text.</p>
+      {{/twbs-form-group}}
+    `);
+
+    run(() => {
+      model.get('errors')._add('anotherString', 'Some sort of error.');
+      model.get('errors')._add('anotherString', 'Another kind of error.');
+    });
+
+    assert.equal(findAll('.form-group').length, 1);
+    assert.equal(findAll('.form-group.has-error').length, 1);
+    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 1);
+    assert.equal(findAll(
+      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
+    ).length, 2);
+    assert.equal(find(
+      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
+    ).textContent,
+      'Some sort of error.');
+    assert.equal(find(findAll(
+      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
+    )[1]).textContent,
+      'Another kind of error.');
   });
 
-  assert.equal(this.$('.form-group').length, 1);
-  assert.equal(this.$('.form-group.has-error').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message').length, 2);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message:eq(0)').text(),
-    'Some sort of error.');
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message:eq(1)').text(),
-    'Another kind of error.');
-});
+  test("when an error is present among other field's errors", async function(assert) {
+    let model;
+    run(() => {
+      model = this.store.createRecord('demo-model');
+      this.set('model', model);
+    });
 
-test("when an error is present among other field's errors", function (assert) {
-  let model;
-  run(() => {
-    model = this.store.createRecord('demo-model');
-    this.set('model', model);
+    await render(hbs`
+      {{#twbs-form-group fieldErrors=model.errors.anotherString}}
+        <label for="js-some-text" class="control-label">Some Text</label>
+        <input type="text" id="js-some-text" class="form-control" value=""/>
+        <p class="help-block">Help about some text.</p>
+      {{/twbs-form-group}}
+    `);
+
+    run(() => {
+      model.get('errors')._add('anotherString', 'Some sort of error.');
+      model.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
+      model.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
+      model.get('errors')._add('someString', 'An error message about the someString attribute');
+
+    });
+
+    assert.equal(findAll('.form-group').length, 1);
+    assert.equal(findAll('.form-group.has-error').length, 1);
+    assert.equal(findAll('.form-group > .help-block.twbs-form-group-errors').length, 1);
+    assert.equal(findAll(
+      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
+    ).length, 1);
+    assert.equal(find(
+      '.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message'
+    ).textContent,
+      'Some sort of error.');
   });
-
-  this.render(hbs`
-    {{#twbs-form-group fieldErrors=model.errors.anotherString}}
-      <label for="js-some-text" class="control-label">Some Text</label>
-      <input type="text" id="js-some-text" class="form-control" value=""/>
-      <p class="help-block">Help about some text.</p>
-    {{/twbs-form-group}}
-  `);
-
-  run(() => {
-    model.get('errors')._add('anotherString', 'Some sort of error.');
-    model.get('errors')._add('someBoolean', 'An error message about the someBoolean attribute');
-    model.get('errors')._add('someNumber', 'An error message about the someNumber attribute');
-    model.get('errors')._add('someString', 'An error message about the someString attribute');
-
-  });
-
-  assert.equal(this.$('.form-group').length, 1);
-  assert.equal(this.$('.form-group.has-error').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message').length, 1);
-  assert.equal(this.$('.form-group > .help-block.twbs-form-group-errors > .twbs-form-group-error-message:eq(0)').text(),
-    'Some sort of error.');
 });

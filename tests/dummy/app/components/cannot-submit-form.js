@@ -5,7 +5,7 @@ import layout from '../templates/components/cannot-submit-form';
 export default Component.extend({
   actions: {
     submit() {
-      this.get('results').pushObject('Submitted On-Enter');
+      this.results.pushObject('Submitted On-Enter');
       return true;
     }
   },

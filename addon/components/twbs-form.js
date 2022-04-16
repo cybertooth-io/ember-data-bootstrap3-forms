@@ -14,7 +14,7 @@ export default Component.extend({
   layout,
   tagName: "form",
   didInsertElement() {
-    const resetAction = this.get("reset");
+    const resetAction = this.reset;
     if (isPresent(resetAction)) {
       this.$()
         .off("reset.twbs-form")
