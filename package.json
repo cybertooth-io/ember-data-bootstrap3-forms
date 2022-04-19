@@ -81,7 +81,7 @@
     "loader.js": "^4.7.0",
     "prettier": "^2.6.2",
     "qunit-dom": "0.9",
-    "sass": "~1.14.3"
+    "sass": "~1.50.1"
   },
   "engines": {
     "node": "8.* || >= 10.*"
